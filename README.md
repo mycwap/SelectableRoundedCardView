@@ -31,9 +31,9 @@ dependencies {
 ```
 Screenshot
 --------
-![](static/pictures/screenshot1.png)
-![](static/pictures/screenshot2.png)
-![](static/pictures/screenshot3.png)
+![](web/pictures/screenshot1.png)
+![](web/pictures/screenshot2.png)
+![](web/pictures/screenshot3.png)
 
 
 License
