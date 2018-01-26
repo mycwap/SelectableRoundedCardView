@@ -10,15 +10,51 @@
     <ie.miao.yichong.diycardview.view.DIYRoundedCardView
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        app:DIYLeftBottomCorner="false"
+        app:DIYLeftTopCorner="false"
+        app:DIYRightTopCorner="false"
         app:cardCornerRadius="25dp"
         app:cardElevation="25dp"
-        app:DIYRightTopCorner="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ie.miao.yichong.diycardview.view.DIYRoundedCardView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:DIYLeftTopCorner="false"
+        app:DIYRightTopCorner="false"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ie.miao.yichong.diycardview.view.DIYRoundedCardView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        app:DIYLeftBottomCorner="false"
+        app:DIYLeftTopCorner="false"
+        app:DIYRightBottomCorner="false"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ie.miao.yichong.diycardview.view.DIYRoundedCardView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        app:DIYLeftBottomCorner="false"
+        app:DIYRightBottomCorner="false"
+        app:DIYRightTopCorner="false"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>
