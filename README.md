@@ -20,6 +20,14 @@ Example
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+Use below to choose conner:
+        app:DIYRightTopCorner="false"
+        app:DIYRightBottomCorner="false"
+        app:DIYLeftBottomCorner="false"
+        app:DIYLeftTopCorner="false"
+
+
 ```
 Download
 --------
