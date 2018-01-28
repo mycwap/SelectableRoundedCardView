@@ -80,6 +80,7 @@ public class DIYRoundedCardView extends LinearLayout {
     }
 
 
+
     @Override
     public void setPadding(int left, int top, int right, int bottom) {
         // NO OP
@@ -227,7 +228,7 @@ public class DIYRoundedCardView extends LinearLayout {
         boolean rightTop = a.getBoolean(R.styleable.DIYRoundedCardView_DIYRightTopCorner, true);
 
 
-        boolean[]roundedCorner={leftTop,rightTop,leftBottom,rightBottom};
+        boolean[]roundedCorner={leftTop,rightTop,rightBottom,leftBottom};
 
         a.recycle();
 

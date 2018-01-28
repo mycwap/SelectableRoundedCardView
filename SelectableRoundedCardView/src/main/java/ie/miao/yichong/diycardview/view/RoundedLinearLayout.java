@@ -1,10 +1,8 @@
 package ie.miao.yichong.diycardview.view;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
@@ -21,8 +19,8 @@ import ie.miao.yichong.diycardview.R;
 public class RoundedLinearLayout extends LinearLayout {
 
 
-    private boolean[]roundedCorner;
-    private  float radius;
+    private boolean[] roundedCorner;
+    private float radius;
 
     public RoundedLinearLayout(Context context) {
 
@@ -68,7 +66,7 @@ public class RoundedLinearLayout extends LinearLayout {
         }
 
 
-                //1 2
+        //1 2
         //3 4
         clipPath.addRoundRect(new RectF(canvas.getClipBounds()), corners, Path.Direction.CW);
 
@@ -91,7 +89,7 @@ public class RoundedLinearLayout extends LinearLayout {
         boolean rightTop = a.getBoolean(R.styleable.DIYRoundedCardView_DIYRightTopCorner, true);
 
 
-        roundedCorner= new boolean[]{leftTop, rightTop, leftBottom, rightBottom};
+        roundedCorner = new boolean[]{leftTop, rightTop, rightBottom, leftBottom};
 
         a.recycle();
 

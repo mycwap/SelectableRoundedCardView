@@ -168,12 +168,6 @@ class RoundRectDrawable extends Drawable {
         if (bounds == null) {
             bounds = getBounds();
         }
-
-        mBoundsF.set(mRadius, mRadius, bounds.width() - mRadius, bounds.height() - mRadius);
-//        mRect.set(mMargin, mMargin, bounds.width() - mMargin, bounds.height() - mMargin);
-//        canvas.drawRect(mRectBottomR, mPaint); //only bottom-right corner not rounded
-
-
         mBoundsF.set(bounds.left, bounds.top, bounds.right, bounds.bottom);
         mBoundsI.set(bounds);
         if (mInsetForPadding) {
@@ -183,6 +177,10 @@ class RoundRectDrawable extends Drawable {
             // to make sure they have same bounds.
             mBoundsF.set(mBoundsI);
         }
+
+
+
+
     }
 
 
@@ -224,6 +222,9 @@ class RoundRectDrawable extends Drawable {
 
 
             outline.setConvexPath(clipPath);
+
+
+
         } else {
             outline.setRoundRect(mBoundsI, mRadius);
 
@@ -297,6 +298,9 @@ class RoundRectDrawable extends Drawable {
         }
         return colorChanged;
     }
+
+
+
 
     @Override
     public boolean isStateful() {
