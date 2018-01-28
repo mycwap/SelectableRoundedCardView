@@ -7,54 +7,235 @@
     android:background="@color/colorPrimary"
     tools:context="ie.miao.yichong.mCardview.MainActivity">
 
-    <ie.miao.yichong.diycardview.view.DIYRoundedCardView
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:DIYLeftBottomCorner="false"
-        app:DIYLeftTopCorner="false"
-        app:DIYRightTopCorner="false"
-        app:cardCornerRadius="25dp"
-        app:cardElevation="25dp"
+    <ie.miao.yichong.diycardview.view.DIYRoundedCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        card_view:cardCornerRadius="35dp"
+        android:orientation="vertical"
+        android:background="@drawable/bg"
 
-    <ie.miao.yichong.diycardview.view.DIYRoundedCardView
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        app:DIYLeftTopCorner="false"
-        app:DIYRightTopCorner="false"
-        app:cardCornerRadius="25dp"
-        app:cardElevation="25dp"
+        card_view:cardElevation="4dp"
+        card_view:cardUseCompatPadding="true">
+
+
+         <ImageView
+             android:layout_width="300dp"
+             android:layout_height="300dp"
+             android:adjustViewBounds="true"
+             android:cropToPadding="true"
+             android:scaleType="fitXY"
+             app:layout_constraintDimensionRatio="1:1"
+             app:srcCompat="@drawable/ch" />
+
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_margin="1dp"
+             android:layout_marginTop="0dp"
+             android:background="#ffffff"
+             android:gravity="center"
+             android:padding="10dp"
+             android:paddingBottom="5dp"
+             android:paddingTop="5dp"
+
+             android:text="Bundle Sale"
+             android:textSize="18dp"
+             app:layout_constraintLeft_toLeftOf="parent"
+             app:layout_constraintRight_toRightOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/marginSpacer2" />
+
+
+
+    </ie.miao.yichong.diycardview.view.DIYRoundedCardView>
+
+
+
+
+
+
+    <ie.miao.yichong.diycardview.view.DIYRoundedCardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        card_view:DIYRightTopCorner="false"
+        card_view:cardCornerRadius="35dp"
+        card_view:cardElevation="4dp"
+        card_view:cardUseCompatPadding="true">
 
-    <ie.miao.yichong.diycardview.view.DIYRoundedCardView
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        <ie.miao.yichong.diycardview.view.RoundedLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg"
+            card_view:DIYRightTopCorner="false"
+            card_view:cardCornerRadius="35dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/special_category_image123"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                android:scaleType="fitXY"
+                app:layout_constraintDimensionRatio="1:1"
+                app:srcCompat="@drawable/ch" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_marginTop="0dp"
+                android:background="#ffffff"
+                android:gravity="center"
+                android:padding="10dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="Bundle Sale"
+                android:textSize="18dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/marginSpacer2" />
+
+        </ie.miao.yichong.diycardview.view.RoundedLinearLayout>
+    </ie.miao.yichong.diycardview.view.DIYRoundedCardView>
+
+    <com.github.captain_miao.optroundcardview.OptRoundCardView
+        android:id="@+id/card2"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
-        app:DIYLeftBottomCorner="false"
-        app:DIYLeftTopCorner="false"
-        app:DIYRightBottomCorner="false"
-        app:cardCornerRadius="25dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
         app:cardElevation="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/card"
+        app:optRoundCardBottomEdges="false"
+        app:optRoundCardCornerRadius="28dp"
+        app:optRoundCardLeftBottomCorner="false"
+        app:optRoundCardRightBottomCorner="false">
 
-    <ie.miao.yichong.diycardview.view.DIYRoundedCardView
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        <android.support.constraint.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <android.support.v4.widget.Space
+                android:id="@+id/marginSpacer2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/special_category_image2"
+                app:layout_constraintLeft_toLeftOf="@id/special_category_image2"
+                app:layout_constraintRight_toRightOf="@id/special_category_image2" />
+
+            <TextView
+                android:id="@+id/row_special_category_textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="Bundle Sale"
+                android:textSize="18dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/marginSpacer2" />
+
+
+            <ImageView
+                android:id="@+id/special_category_image2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                android:layout_marginEnd="8dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ch" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </com.github.captain_miao.optroundcardview.OptRoundCardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="260dp"
+        android:layout_height="260dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        app:DIYLeftBottomCorner="false"
-        app:DIYRightBottomCorner="false"
-        app:DIYRightTopCorner="false"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         app:cardCornerRadius="25dp"
         app:cardElevation="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <android.support.constraint.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <android.support.v4.widget.Space
+                android:id="@+id/marginSpacer1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/special_category_image1"
+                app:layout_constraintLeft_toLeftOf="@id/special_category_image1"
+                app:layout_constraintRight_toRightOf="@id/special_category_image1" />
+
+            <TextView
+                android:id="@+id/row_special_category_textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="Bundle Sale"
+                android:textSize="18dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/marginSpacer1" />
+
+
+            <ImageView
+                android:id="@+id/special_category_image1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg"
+                android:cropToPadding="true"
+                android:scaleType="fitXY"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ch" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+
 </android.support.constraint.ConstraintLayout>

@@ -3,8 +3,11 @@ package ie.miao.yichong.diycardview.view;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Path;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.ColorInt;
@@ -13,6 +16,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import ie.miao.yichong.diycardview.R;
 
@@ -22,7 +26,7 @@ import ie.miao.yichong.diycardview.R;
  * CreateAt: 20/01/2018.
  */
 
-public class DIYRoundedCardView extends FrameLayout {
+public class DIYRoundedCardView extends LinearLayout {
 
 
     private static final int[] COLOR_BACKGROUND_ATTR = {android.R.attr.colorBackground};
@@ -39,6 +43,9 @@ public class DIYRoundedCardView extends FrameLayout {
 
         IMPL.initStatic();
     }
+
+
+
 
     private boolean mCompatPadding;
 
@@ -220,7 +227,7 @@ public class DIYRoundedCardView extends FrameLayout {
         boolean rightTop = a.getBoolean(R.styleable.DIYRoundedCardView_DIYRightTopCorner, true);
 
 
-        boolean[]roundedCorner={leftTop,leftBottom,rightBottom,rightTop};
+        boolean[]roundedCorner={leftTop,rightTop,leftBottom,rightBottom};
 
         a.recycle();
 

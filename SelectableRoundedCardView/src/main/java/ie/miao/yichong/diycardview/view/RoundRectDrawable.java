@@ -22,6 +22,7 @@ import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Outline;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
@@ -30,6 +31,7 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 
 /**
@@ -110,69 +112,54 @@ class RoundRectDrawable extends Drawable {
             clearColorFilter = false;
         }
 
-        //canvas.drawRoundRect(mBoundsF, mRadius, mRadius, paint);
-        drawTopRoundRect(canvas, mBoundsF, mRadius, mRadius, paint,roundedCorner);
+        if (null == roundedCorner) {
+            canvas.drawRoundRect(mBoundsF, mRadius, mRadius, paint);
+
+        } else {
+            drawTopRoundRect(canvas, mBoundsF, mRadius, mRadius, paint, roundedCorner);
+
+        }
+
+
         if (clearColorFilter) {
             paint.setColorFilter(null);
         }
     }
 
-    public   static  void drawTopRoundRect(Canvas canvas, RectF rect, float mRadius, float mRadius1, Paint paint,boolean[]roundedCorner) {
+
+    public static void drawTopRoundRect(Canvas canvas, RectF rect, float mRadius, float mRadius1, Paint paint, boolean[] roundedCorner) {
 
 
+        if (roundedCorner.length != 4) {
+            Log.e("RoundRectDrawable", "Not enough conner data");
 
-        // float mDiameter = mRadius1;
-        float xDiameter = Math.abs(rect.right - rect.left) / 2;
-        float yDiameter = Math.abs(rect.top - rect.right) / 2;
+            return;
+        }
 
+        Path clipPath = new Path();
+        float[] corners = new float[8];
+        int i = 0;
+        for (boolean r : roundedCorner) {
+            if (r) {
 
-        // Step 1. Draw rect with rounded corners.
-         canvas.drawRoundRect(rect, mRadius, mRadius1, paint);
-
-
-        // Step 2. Draw rect to cover the conner,
-
-        if (roundedCorner != null) {
-
-            if (!roundedCorner[0]) {
-                canvas.drawRoundRect(
-                        new RectF(
-                                rect.left, rect.top, xDiameter, yDiameter),
-                        0,
-                        0,
-                        paint);
-
-            }
-
-            if (!roundedCorner[1]) {
-                canvas.drawRoundRect(
-                        new RectF(
-                                rect.left, yDiameter,xDiameter, rect.bottom),
-                        0,
-                        0,
-                        paint);
-
-            }
-            if (!roundedCorner[2]) {
-                canvas.drawRoundRect(
-                        new RectF(
-                                xDiameter, yDiameter, rect.right, rect.bottom),
-                        0,
-                        0,
-                        paint);
-
-            }
+                corners[i++] = mRadius;
 
 
-            if (!roundedCorner[3]) {
-                canvas.drawRoundRect(
-                        new RectF(
-                                rect.right - xDiameter, rect.top, rect.right, yDiameter),
-                        0,
-                        0,
-                        paint);
+                corners[i++] = mRadius1;
+
+            } else {
+
+                corners[i++] = 0;
+                corners[i++] = 0;
+
             }
         }
+
+        clipPath.addRoundRect(rect, corners, Path.Direction.CW);
+
+
+        canvas.drawPath(clipPath, paint);
+
 
     }
 
@@ -181,6 +168,12 @@ class RoundRectDrawable extends Drawable {
         if (bounds == null) {
             bounds = getBounds();
         }
+
+        mBoundsF.set(mRadius, mRadius, bounds.width() - mRadius, bounds.height() - mRadius);
+//        mRect.set(mMargin, mMargin, bounds.width() - mMargin, bounds.height() - mMargin);
+//        canvas.drawRect(mRectBottomR, mPaint); //only bottom-right corner not rounded
+
+
         mBoundsF.set(bounds.left, bounds.top, bounds.right, bounds.bottom);
         mBoundsI.set(bounds);
         if (mInsetForPadding) {
@@ -192,6 +185,13 @@ class RoundRectDrawable extends Drawable {
         }
     }
 
+
+    //    @Override
+//    protected void onBoundsChange(Rect bounds) {
+//        super.onBoundsChange(bounds);
+//        //mRectBottomR.set( (bounds.width() -mMargin) / 2, (bounds.height() -mMargin)/ 2,bounds.width() - mMargin, bounds.height() - mMargin);
+//        // mRectBottomL.set( 0,  (bounds.height() -mMargin) / 2, (bounds.width() -mMargin)/ 2, bounds.height() - mMargin);
+//    }
     @Override
     protected void onBoundsChange(Rect bounds) {
         super.onBoundsChange(bounds);
@@ -201,22 +201,32 @@ class RoundRectDrawable extends Drawable {
     @Override
     public void getOutline(Outline outline) {
 
-        if (roundedCorner == null) {
-            outline.setRoundRect(mBoundsI, mRadius);
-        } else {
-            boolean ifRounded = true;
-            for (boolean conner : roundedCorner) {
-                if (!conner) {
+        if (null != roundedCorner) {
+            Path clipPath = new Path();
+            float[] corners = new float[8];
+            int i = 0;
+            for (boolean r : roundedCorner) {
+                if (r) {
 
-                    ifRounded = false;
+                    corners[i++] = mRadius;
+
+
+                    corners[i++] = mRadius;
+
+                } else {
+
+                    corners[i++] = 0;
+                    corners[i++] = 0;
+
                 }
             }
+            clipPath.addRoundRect(mBoundsF, corners, Path.Direction.CW);
 
-            if (ifRounded) {
-                outline.setRoundRect(mBoundsI, mRadius);
-            } else {
-                outline.setRoundRect(mBoundsI, 0);
-            }
+
+            outline.setConvexPath(clipPath);
+        } else {
+            outline.setRoundRect(mBoundsI, mRadius);
+
         }
 
 
